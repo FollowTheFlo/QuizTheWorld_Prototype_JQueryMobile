@@ -1,47 +1,206 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
- <script src="js/jquery.mobile/jquery-1.7.2.min"></script>
-     <script src="js/jquery.mobile/jquery.mobile-1.3.0-rc.1.js"></script>
-  <link rel="stylesheet" href="js/jquery.mobile/jquery.mobile-1.3.0-rc.1.min.css" />
   
+	
+	 <script src="js/jquery.mobile/jquery-1.7.2.min"></script>
+   
+   <script src="js/jquery.mobile/jquery.mobile-1.3.0-rc.1.js"></script>
+  <link rel="stylesheet" href="js/jquery.mobile/jquery.mobile-1.3.0-rc.1.min.css" />
+ 	<script src="js/dashboard.js"></script>
+ 	<script  src="js/index.js"></script>
+	<script  src="js/quizz.js"></script>
+	<script  src="js/toast.js"></script>
+	<script  src="js/article.js"></script>
 
-	
-	<script src="js/index.js"></script>
-	<script src="js/quizz.js"></script>
-	<script src="js/toast.js"></script>
-	<script src="js/article.js"></script>
-	
-    <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-       <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src: 'self' 'unsafe-inline' 'unsafe-eval'">
+	 <head>
+	 <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src: 'self' 'unsafe-inline' 'unsafe-eval'">
         
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Knowledge</title>
-    </head>
-    <body style="background-color: yellow;">
-        <div id="title" >
-    	<h2 style="font-size:25px;color:white;text-align:center">Knowledge</h2>
+		
+		<link rel="stylesheet" href="themes/flo_style.min.css" />
+  <link rel="stylesheet" href="responsive.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+		
+    <title>Quizz The World</title>
+
+		
+	 
+	
+    
+      
+
+
+  </head>
+  <body data-position="fixed">
+
+<div  id="page-home" >
+
+	<div id="title">
+    	<h2>Quiz The World</h2>
     </div>
-<h3>Enter Article</h3><div id="article_input_area"> <input type="text" name="article_input" id="article_input" value="Quebec"  /></div>
+    
+ 
+ 	
 
-	<div style="display:none;" id="subject_index_input_area"> <h3>Subject Index</h2><input type="text" name="subject_index_input" id="subject_index_input" value="0"  /></div>
-	<div style="display:none;" id="multiple_choices_number_input_area"> <h3>Multiple Choices Max Number</h2> <input type="text" name="multiple_choices_number_input" id="multiple_choices_number_input" value="5"  /></div>
 
-	<div id="article_btn_area"><a data-inline="true" data-content-theme='a' data-theme='a' id="article_btn" data-role="button">Run</a>
-	<div id="next_btn_area"><a data-inline="true" data-content-theme='a' data-theme='a' id="next_btn" data-role="button" style="display:none;">Next</a>
+<div id="tile_menu" style="visibility:visible;">
+ <div id="tab_title" ><h3  style='font-size:25 px;color:white;text-align:center'>- - - - - Home - - - - -</h3> </div> 
+
+	<div id="tile_top_left"><h2>Enter Article</h2>
+	<div id="article_input_area"> <input type="text" name="article_input" id="article_input" value="Paris"  /></div>
+	<div id="start_quizz_btn_area"><a data-inline="true" data-content-theme='a' data-theme='a' id="article_btn" data-role="button">Start Quiz</a>
 	</div>
-	<div id="questions_counter" ></div>
-	<div id="questions_area">	</div>
-    </body>
+	<div id="language_area">
+	<select  data-content-theme='a' data-corners='true' data-theme='a' data-native-menu='false' data-mini='true' data-inline='true'  id='language_list' name='language_list'>
+		<option value='en'>En</option>
+		<option value='fr'>Fr</option>
+		<option value='es'>Es</option>
+	
+		</select>
+		
+		</div>
+	
+	</div>
+	
+	<!-- <div id="tile_top_right"><h2>Info</h2></div> -->
+	<div id="tile_middle_center"><h2>Quiz History</h2></div>
+	<div id="tile_bottom_left"><h2>Tools</h2></div>
+	<div id="tile_bottom_right"><h2>Help</h2></div>
+
+	
+</div>
+
+
+
+<div id="quiz_content" style="visibility:hidden" >
+
+	
+
+	<div id="quiz_questions">
+		<h3 style='font-size:25 px;color:white;text-align:center;margin-bottom:8px;'>- - - - Questions - - - -</h3>
+		<div id="questions_body">
+		<div id="next_btn_area"></div>
+		<div id="live_answer_popup"  data-theme='b' data-transition="slidedown" data-overlay-theme="a" data-shadow="true" data-rel="back" data-role="popup"  data-position-to="#questions_area"><div id="live_answer_output"></div></div>
+		
+		<div id="questions_counter" ></div>
+		<div id="questions_area">	</div>
+		</div>
+			</div>
+	<div id="quiz_results" >
+	<h3 style='font-size:25 px;color:white;text-align:center;margin-bottom:8px;'>- - - - Results - - - -</h3>
+	<div id="results_details">
+			<a data-inline="true" data-content-theme='a' data-theme='a' id="results_details_btn" data-role="button">Show Results Details</a>
+		</div>
+		<div id="results_score"></div>
+	
+	</div>
+
+
+
+</div>
+
+
+
+<div id="tools" style="visibility:hidden" data-content-theme='a' data-theme='a'>
+<h3 style='font-size:25 px;color:white;text-align:center;margin-bottom:8px;'>- - - - Tools - - - -</h3>
+<h3 style='font-size:20 px;color:white;text-align:center;'>Max Questions Number</h3>
+<div class="tools_options" id="questions_number_input_area"> <input type="text" name="questions_number_input" id="questions_number_input" value="4"  /></div>
+<h3 style='font-size:20 px;color:white;text-align:center;'>Max Multiple Choices Number</h3>
+<div class="tools_options" id="choices_number_input_area"> <input type="text" name="choices_number_input" id="choices_number_input" value="3"  /></div>
+<h3 style='font-size:20 px;color:white;text-align:center;'>Show answer after each question</h3>
+<div class="tools_options" id="show_toast_result_input_area" ><select name="show_toast_result_input" id="show_toast_result_input" data-role="slider" data-theme="a" data-track-theme="a">
+	<option value="off">Off</option>
+	<option value="on">On</option>
+</select>
+</div>
+
+</div>
+
+<div id="quiz_history" style="visibility:hidden" data-content-theme='a' data-theme='a'>
+<h3 style='font-size:25 px;color:white;text-align:center;margin-bottom:8px;'>- - - - History - - - -</h3>
+
+<div id="history_area"></div>
+</div>
+
+<div id="help" style="visibility:hidden" data-content-theme='a' data-theme='a'>
+<h3 style='font-size:25 px;color:white;text-align:center;margin-bottom:8px;'>- - - - Help - - - -</h3>
+
+<div id="help_area">
+<div data-role="collapsible-set" data-theme="a" data-content-theme="a">
+    
+	<div data-role="collapsible">
+        <h3>Main purpose of this App</h3>
+		<ul>
+			<li>Build Quizes from any Article of Wikipedia, so over 5 millions! </li>
+			<li>Test your knowledge on any Article of Wikipedia, so over 5 millions!</li>
+			<li>Quick process based on Multiple choices: it takes a minute to build and answer a quiz!</li>
+			<li>Optimized Shuffle: run quiz on same article multiple times, choices are always different!</li>
+		</ul>
+    </div>
+	<div data-role="collapsible">
+        <h3>'Enter Article' Menu</h3>
+		<p>User writes a keyword that must match a Wikipedia Article Title. </p>
+        <p>It is cases/space sensitive, the spelling must be the EXACT same as the wikipedia Article Title, ex:
+		<ul>
+			<li>'Smashing Pumpkins' -> Wrong</li>
+			<li>'The smashing pumpkins' -> Wrong</li>
+			<li>'The Smashing pumpkins' -> Wrong</li>
+			<li>'The Smashing Pumpkins' -> Right</li>
+		</ul>
+		</p>
+    </div>
+    <div data-role="collapsible">
+        <h3>History Menu</h3>
+        <p>List all the quizes since the application has been running, it is not saving data on the device hard drive.<br/>If you reopen the app, the quiz history is cleared.</p>
+    </div>
+	<div data-role="collapsible">
+        <h3>Tools Menu</h3>
+        <ul><li>Select the maximum number of choices for each question (minimum 2)</li>
+		<li>Select the maximum number of questions for the full quiz</li>
+		<li>Show Answer after each questions via a popup window</li>
+		<li>The changes are applied to the next quiz running</li>
+    </div>
+	
+	<div data-role="collapsible">
+        <h3>Questions based on Wikipedia Articles</h3>
+        <p>The App generates Quiz Questions based on the entered wikipedia article. Using SPARQL over DBpedia, it queries the subjects associated to this article, 
+		it searchs for articles (Distractors) having its subjects in common, then, the distractors's subjects are returned.</p>
+    </div>
+	<div data-role="collapsible">
+        <h3>Performances </h3>
+        <p>The 'Max number of questions' set in Tools menu has an impact on the performance. <br/> The delay is roughly proportional to this max questions number. <br/> Decrease the value if the delay to generate the quiz is too long</p>
+    </div>
+	<div data-role="collapsible">
+        <h3>Technology used </h3>
+        <p>HTML,CSS,Javascript,Jquery,JQuery Mobile,Cordova,Notepad++,SPARQL,DBpedia</p>
+		<p>This App is a prototype, a version based on AngularJS is on the roadmap</p>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+
+	<div id="details_results_popup"   data-theme='b'  data-overlay-theme="a" data-shadow="true" data-rel="back" data-role="popup" data-position-to="#tile_menu" >
+		<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+		<div id="details_results_output"></div>
+	</div>
+
+</div>
+
+	</div>
+	
+		<div data-content-theme='e' data-theme='e' id="nav_button" data-role="navbar" data-position="fixed">
+			<ul>
+				<li><a data-theme="i" id="home_btn" class="ui-btn-active">Home</a></li>
+				<li><a data-theme="i" id="quiz_btn" >Quiz</a></li>
+			
+			</ul>
+		</div>   <!-- /navbar -->
+
+  </body>
 </html>
