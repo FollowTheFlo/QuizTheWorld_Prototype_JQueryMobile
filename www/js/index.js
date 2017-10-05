@@ -153,6 +153,7 @@ function build_quizz(keyword)
 	//alert("MAX_QUESTIONS_NUMBER "+MAX_QUESTIONS_NUMBER+", MAX_CHOICES_NUMBER "+MAX_CHOICES_NUMBER);
 	//Quizz(target_name,multiple_choices_number,questions_number,min_score,DISPLAY_LIVE_RESPONSE)
 	current_quiz = new Quizz(quiz_number,keyword,parseInt(MAX_CHOICES_NUMBER),parseInt(MAX_QUESTIONS_NUMBER),70,SHOW_ANSWER_AFTER_QUESTION,USER_LOCALE);
+	//current_quiz = new Quizz(quiz_number,keyword,parseInt(MAX_CHOICES_NUMBER),parseInt(MAX_QUESTIONS_NUMBER),70,SHOW_ANSWER_AFTER_QUESTION,USER_LOCALE);
 	
 	//document.getElementById('next_btn').style.display = "none";
 	//		$("#next_btn").die('tap');
@@ -171,7 +172,7 @@ function build_quizz(keyword)
 			
 			current_quiz.enable_NEXT_feature();
 			
-			FIRST_QUIZ = false;
+			
 		
 			quiz_list[quiz_number] = current_quiz;
 		  
@@ -179,8 +180,12 @@ function build_quizz(keyword)
 		}
 		else
 		{
-			alert("No valid questions found");
+			//alert("No valid questions found");
+			current_quiz.enable_NEXT_feature();
+			
+			//current_quiz.disable_NEXT_feature();
 		}
+		FIRST_QUIZ = false;
 
 }
 	

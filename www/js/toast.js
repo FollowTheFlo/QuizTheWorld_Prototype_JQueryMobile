@@ -265,6 +265,75 @@ function Toast(){
 		
 		build_choices_list();
 		
+		/*
+		var random_index = Math.floor(Math.random()*(KO_thumb_article_list.length+1));
+		
+		console.log("build_choices_list, random index: "+random_index);
+		var thumbnail_Choices_list = [];
+		
+		var article_index=0;
+		while(article_index < random_index)
+		{
+			//Choice(choices_index,article,wiki_correct)
+			
+			thumbnail_Choices_list[article_index]= new Choice(article_index,KO_thumb_article_list[article_index],false);
+			
+			article_index++;
+		}
+		
+				
+		//insert good choices
+		thumbnail_Choices_list[article_index]= new Choice(article_index,OK_thumb_article,true);
+		article_index++;//increment the index to insert KO choicess after OK choices
+		
+		//add 1 to length as we added OK choices
+		while(article_index < (KO_thumb_article_list.length+1))
+		{
+			//Choice(choices_index,article,wiki_correct)
+			
+			//article_index-1 to pull the subject KO as there was an offset created by OK subject insert
+			thumbnail_Choices_list[article_index]= new Choice(article_index,KO_thumb_article_list[article_index-1],false);
+			console.log("FLO Index QA -> " + article_index);
+			
+			
+			article_index++;
+			
+			
+		}
+		
+		///now display
+		
+		console.log("UI_HTML_build_radio_buttons");
+		console.log("FLO thumbnail_Choices_list.length -> " + thumbnail_Choices_list.length);
+		var index=0;
+		var QA_string= target_title +" is best related to :\n";
+		var HTML_string = "<h2 style='font-size:15px;color:white;text-align:center'>'"+OK_thumb_article.article_name +"' is best related to:</2><fieldset data-role='controlgroup' data-mini='false' id='radio_quiz' data-content-theme='c' data-corners='false' data-theme='c' data-native-menu='false' >";
+
+     	
+		while(index < thumbnail_Choices_list.length)
+		{
+			console.log("FLO Index-> "+index);
+			
+			QA_string = QA_string + (index+1) + " - " +thumbnail_Choices_list[index].article.article_name + " OK -> " + thumbnail_Choices_list[index].wiki_correct + "\n";
+			
+			HTML_string = HTML_string + "<input data-content-theme='a' data-theme='a' type='radio' name='quiz-choice' id='radio-choices-"+index+"' value='" +index + "' />"+
+			"<label for='radio-choices-" +index + "'><img height='50' width='70' src='"+thumbnail_Choices_list[index].article.thumbnail_url + "'/> </label>";
+			
+			console.log("FLO temp QA_string-> "+QA_string + ", good -> "+thumbnail_Choices_list[index].wiki_correct);
+			
+			index++;
+		}
+		
+		HTML_string = HTML_string + "</fieldset>";
+		//HTML_string = HTML_string + "<h3>"+distractor.article_name + "</h3>";
+		//HTML_string = HTML_string + "<img height='100' width='150' src='"+distractor.thumbnail_url + "'/>";
+		console.log("QA_string -> "+QA_string);
+		
+		UI_HTML_string = HTML_string;
+
+		
+		*/
+		
 				
 	}
 	

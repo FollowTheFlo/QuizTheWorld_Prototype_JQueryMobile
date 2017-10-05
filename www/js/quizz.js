@@ -53,6 +53,7 @@ function Quizz(quiz_number,target_name,multiple_choices_number,max_questions_num
 		var distractor_index=0;
 		var distractor_count=0;
 		var random_distractor_index=0;
+		toasts_list = [];
 		
 		target_subjects_count = count_Target_Subjects();
 		
@@ -294,7 +295,7 @@ function Quizz(quiz_number,target_name,multiple_choices_number,max_questions_num
 		console.log("enable_NEXT_feature, quiz_number: "+quiz_number);
 		
 		//display NEXT button and bind the event
-		$("#next_btn .ui-btn-text").text("Next");
+		$("#next_btn-"+quiz_number+" .ui-btn-text").text("Next");
 		document.getElementById('next_btn-'+quiz_number).style.display = "block";
 		
 	
@@ -307,7 +308,7 @@ function Quizz(quiz_number,target_name,multiple_choices_number,max_questions_num
 	
 		//hide NEXT button and kill the event;
 		console.log("disable_NEXT_feature, quiz_number: "+quiz_number);
-		$("#next_btn-"+quiz_number).off();
+		$("#next_btn-"+quiz_number).die();
 		document.getElementById('next_btn-'+quiz_number).style.display = "none";
 		
 		$("#results_details_btn").die();
@@ -438,6 +439,7 @@ function Quizz(quiz_number,target_name,multiple_choices_number,max_questions_num
 	
 	function set_number_of_questions()
 	{
+		console.log("IN set_number_of_questions");
 		//calculate number of questions, if there are more subjects returned from SPARQL than ones from user input, we limit with user limit
 		if(toasts_list.length > max_questions_number)
 		{
@@ -454,8 +456,8 @@ function Quizz(quiz_number,target_name,multiple_choices_number,max_questions_num
 	{
 		Add_next_button();
 		current_question_index=0;
-		this.UI_Init();
-		count_Target_Subjects();
+		//this.UI_Init();
+		//count_Target_Subjects();
 		//target_name,multiple_choices_number,max questions_number
 		
 		//fill_toasts_list() to create all the Toast, Toast contains Choices, Choices contains Articles
@@ -477,7 +479,7 @@ function Quizz(quiz_number,target_name,multiple_choices_number,max_questions_num
 		
 		//calculate the total question number after comparing with user input and question numb pulled from JSON without invalid questions
 		final_questions_number = set_number_of_questions();//this function compared user input number with max valid questions.
-		
+		console.log("final_questions_number : "+final_questions_number);
 		//alert("random_index_list: final_questions_number "+final_questions_number+", toasts_list.length: "+toasts_list.length);
 		//random_index_list= get_random_list_indexes(final_questions_number, toasts_list.length);
 		
@@ -521,10 +523,11 @@ function Quizz(quiz_number,target_name,multiple_choices_number,max_questions_num
 			UI_display_One_Toast_HTML(current_question_index);
 			//current_toast.fill_Toast(target_name,current_question_index,0,0,0,multiple_choices_number);
 			//alert("current_question_index: "+current_question_index+" , toasts_list.length: "+toasts_list.length);
+			
 			if(current_question_index == final_questions_number-1)
 			{
 				//last question, change label NEXT to FINISH
-				$("#next_btn .ui-btn-text").text("Finish");
+				$("#next_btn-"+quiz_number+" .ui-btn-text").text("Finish");
 				
 			}
 			
