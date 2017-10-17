@@ -144,18 +144,15 @@ function Quizz(quiz_number,target_name,multiple_choices_number,max_questions_num
 		{
 			
 			choices_index=0;
-		//	console.log("length of QuestionAnswer : "+toasts_list[toasts_index].choices_list.length);
-			//scanning all the choice of teh toast to see if correct answer match
-			while((choices_index<toasts_list[toasts_index].GET_choices_list().length) && (toasts_list[toasts_index].GET_choices_list()[choices_index].is_correct_answer() == false))
+		
+			while((choices_index<toasts_list[toasts_index].GET_article_shuffle_list().length) && (toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].is_correct_answer() == false))
 			{
-			//	console.log("is_correct : "+toasts_list[toasts_index].choices_list[choices_index].is_correct_answer()+" - choices_index value : "+choices_index+" article name: "+toasts_list[toasts_index].choices_list[choices_index].article.article_name+", user answer: "+toasts_list[toasts_index].choices_list[choices_index].GET_user_answer());
-				choices_index++;
+					choices_index++;
 			}
-			//console.log("OUT j value : "+j+", is correct "+toasts_list[i].choices_list[j].is_correct_answer()+" article name: "+toasts_list[i].choices_list[j].article.article_name+" article name: "+toasts_list[i].choices_list[j].article.article_name+", user answer: "+toasts_list[i].choices_list[j].GET_user_answer());
-			
+				
 			//if didn't go til end of the loop, means we hit the is_correct_answer. if no good answer j is equal to full length
 			
-		  	if(choices_index<toasts_list[toasts_index].GET_choices_list().length)
+		  	if(choices_index<toasts_list[toasts_index].GET_article_shuffle_list().length)
 			{
 				//alert("good answer on - Q"+i);
 				score++;
@@ -172,29 +169,23 @@ function Quizz(quiz_number,target_name,multiple_choices_number,max_questions_num
 		var HTML_string = "<h3 style='font-size:50px;color:white;text-align:center;margin-bottom:0px;'>"+score+" / "+final_questions_number+"</h3>"+
 		"<h3 style='font-size:90px;color:white;text-align:center;margin-bottom:10px;'>"+(score*100/final_questions_number).toFixed(0)+"%</h3>";
 		
-		//	var HTML_string="flo";
-			return HTML_string;
+		return HTML_string;
 		
-		
-		//alert("Total : "+ score +" / "+target_subjects_count + " -> "+ (score*100/target_subjects_count).toFixed(2)+"%");
-		//return (score*100/target_subjects_count).toFixed(2);
 	}
 	
 	function display_correct_answer()
 	{
 		
 		var toast_index= current_question_index;
-		var choices_length = toasts_list[toast_index].GET_choices_list().length;
-		
-		//alert("choices length : " + choices_length)
-		
+		var choices_length = toasts_list[toast_index].GET_article_shuffle_list().length;
+			
 		var i=0;
-		while(i<choices_length && toasts_list[toast_index].GET_choices_list()[i].wiki_correct == false)
+		while(i<choices_length && toasts_list[toast_index].GET_article_shuffle_list()[i].wiki_correct == false)
 		{
 			i++;
 		}
 		
-		return("<h3  style='text-align:center;color:red'>The correct answer is : </br><b>#"+(i+1)+" <br/> "+ toasts_list[toast_index].GET_choices_list()[i].article.article_name)+"</b></h3>";
+		return("<h3  style='text-align:center;color:red'>The correct answer is : </br><b>#"+(i+1)+" <br/> "+ toasts_list[toast_index].GET_article_shuffle_list()[i].article_name)+"</b></h3>";
 		
 	
 	
@@ -217,12 +208,12 @@ function Quizz(quiz_number,target_name,multiple_choices_number,max_questions_num
             }
 			
 		//alert("Insert")
-		toasts_list[toast_index].GET_choices_list()[user_choice_index_int].SET_user_answer(true);
+		toasts_list[toast_index].GET_article_shuffle_list()[user_choice_index_int].SET_user_answer(true);
 		
-		var user_response = toasts_list[toast_index].GET_choices_list()[user_choice_index_int].article.article_name;
+		var user_response = toasts_list[toast_index].GET_article_shuffle_list()[user_choice_index_int].article_name;
 		//alert("FLO user response -> "+user_response+", object length : "+toasts_list[current_question_index].choices_list.length);
 		
-		var is_correct_answer = toasts_list[toast_index].GET_choices_list()[user_choice_index_int].is_correct_answer();
+		var is_correct_answer = toasts_list[toast_index].GET_article_shuffle_list()[user_choice_index_int].is_correct_answer();
 		
 		if(DISPLAY_LIVE_RESPONSE==true)
 			UI_display_live_response(is_correct_answer);
@@ -480,14 +471,10 @@ function Quizz(quiz_number,target_name,multiple_choices_number,max_questions_num
 		//calculate the total question number after comparing with user input and question numb pulled from JSON without invalid questions
 		final_questions_number = set_number_of_questions();//this function compared user input number with max valid questions.
 		console.log("final_questions_number : "+final_questions_number);
-		//alert("random_index_list: final_questions_number "+final_questions_number+", toasts_list.length: "+toasts_list.length);
-		//random_index_list= get_random_list_indexes(final_questions_number, toasts_list.length);
-		
+			
 		
 		UI_Display_questions_counter();
-		//alert("adding toast 1 - index: "+current_question_index);
-		//toasts_list[current_question_index] = current_toast;
-		//alert("current_question_index: "+current_question_index);
+		
 		UI_display_One_Toast_HTML(current_question_index);
 		
 		return true;
@@ -679,34 +666,34 @@ function get_random_list_indexes(index_number, total_number){
 			choices_index=0;
 		//	console.log("length of QuestionAnswer : "+toasts_list[toasts_index].choices_list.length);
 			//scanning all the choice of teh toast to see if correct answer match
-			while(choices_index < toasts_list[toasts_index].GET_choices_list().length)
+			while(choices_index < toasts_list[toasts_index].GET_article_shuffle_list().length)
 			{	
-				if(toasts_list[toasts_index].GET_choices_list()[choices_index].wiki_correct == false && toasts_list[toasts_index].GET_choices_list()[choices_index].GET_user_answer() == false)
+				if(toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].wiki_correct == false && toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].GET_user_answer() == false)
 				{//not correct answer and user did not selected it
 					 
-					 choice_content = choice_content+ "<p style='padding-left:5%;padding-right:5%'>"+(choices_index+1)+" - "+ toasts_list[toasts_index].GET_choices_list()[choices_index].article.get_html()+"</p>";
+					 choice_content = choice_content+ "<p style='padding-left:5%;padding-right:5%'>"+(choices_index+1)+" - "+ toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].get_html()+"</p>";
 					 console.log("condition 1");
 				
-				}else if(toasts_list[toasts_index].GET_choices_list()[choices_index].wiki_correct == false && toasts_list[toasts_index].GET_choices_list()[choices_index].GET_user_answer() == true)
+				}else if(toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].wiki_correct == false && toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].GET_user_answer() == true)
 				{//not correct answer and user selected it: fail questions!
 					
-					 choice_content = choice_content+ "<p style='padding-left:5%;padding-right:5%;color:red'>"+(choices_index+1)+" - "+ toasts_list[toasts_index].GET_choices_list()[choices_index].article.get_html()+"</p>";
+					 choice_content = choice_content+ "<p style='padding-left:5%;padding-right:5%;color:red'>"+(choices_index+1)+" - "+ toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].get_html()+"</p>";
 					 console.log("condition 2");
 					 not_answered=false;
 					
 				}
-				else if(toasts_list[toasts_index].GET_choices_list()[choices_index].wiki_correct == true && toasts_list[toasts_index].GET_choices_list()[choices_index].GET_user_answer() == true)
+				else if(toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].wiki_correct == true && toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].GET_user_answer() == true)
 				{
 					user_answered_fine=true;
 					not_answered=false;
-					choice_content = choice_content+ "<p style='padding-left:5%;padding-right:5%;color:green'>"+(choices_index+1)+" - "+ toasts_list[toasts_index].GET_choices_list()[choices_index].article.get_html()+"</p>";
+					choice_content = choice_content+ "<p style='padding-left:5%;padding-right:5%;color:green'>"+(choices_index+1)+" - "+ toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].get_html()+"</p>";
 					 console.log("condition 3");
 					
 				}
-				else if(toasts_list[toasts_index].GET_choices_list()[choices_index].wiki_correct == true && toasts_list[toasts_index].GET_choices_list()[choices_index].GET_user_answer() == false)
+				else if(toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].wiki_correct == true && toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].GET_user_answer() == false)
 				{
 					
-					choice_content= choice_content+ "<p style='padding-left:5%;padding-right:5%;color:green'>"+(choices_index+1)+" - "+ toasts_list[toasts_index].GET_choices_list()[choices_index].article.get_html()+"</p>";
+					choice_content= choice_content+ "<p style='padding-left:5%;padding-right:5%;color:green'>"+(choices_index+1)+" - "+ toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].get_html()+"</p>";
 					console.log("condition 4");
 					
 				}
@@ -716,11 +703,11 @@ function get_random_list_indexes(index_number, total_number){
 					choice_content= choice_content+ "<p>Undefined</p>";
 				}
 				
-				console.log("wiki_correct: "+toasts_list[toasts_index].GET_choices_list()[choices_index].wiki_correct);
-				console.log("user choice: "+toasts_list[toasts_index].GET_choices_list()[choices_index].GET_user_answer());
+				console.log("wiki_correct: "+toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].wiki_correct);
+				console.log("user choice: "+toasts_list[toasts_index].GET_article_shuffle_list()[choices_index].GET_user_answer());
 				console.log("in choice loop, index  "+choices_index);
 			
-			//	console.log("is_correct : "+toasts_list[toasts_index].choices_list[choices_index].is_correct_answer()+" - choices_index value : "+choices_index+" article name: "+toasts_list[toasts_index].choices_list[choices_index].article.article_name+", user answer: "+toasts_list[toasts_index].choices_list[choices_index].GET_user_answer());
+			//	console.log("is_correct : "+toasts_list[toasts_index].choices_list[choices_index].is_correct_answer()+" - choices_index value : "+choices_index+" article name: "+toasts_list[toasts_index].choices_list[choices_index].article_name+", user answer: "+toasts_list[toasts_index].choices_list[choices_index].GET_user_answer());
 				choices_index++;
 			}
 				
@@ -743,7 +730,7 @@ function get_random_list_indexes(index_number, total_number){
 			questions_content = questions_content + question_header + choice_content + "</div>";
 			choice_content="";
 			not_answered=true;
-					//console.log("OUT j value : "+j+", is correct "+toasts_list[i].choices_list[j].is_correct_answer()+" article name: "+toasts_list[i].choices_list[j].article.article_name+" article name: "+toasts_list[i].choices_list[j].article.article_name+", user answer: "+toasts_list[i].choices_list[j].GET_user_answer());
+					//console.log("OUT j value : "+j+", is correct "+toasts_list[i].choices_list[j].is_correct_answer()+" article name: "+toasts_list[i].choices_list[j].article_name+" article name: "+toasts_list[i].choices_list[j].article_name+", user answer: "+toasts_list[i].choices_list[j].GET_user_answer());
 					
 					//if didn't go til end of the loop, means we hit the is_correct_answer. if no good answer j is equal to full length
 					
