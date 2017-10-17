@@ -1,0 +1,415 @@
+
+h2{
+font-size:35px;
+
+
+}
+
+     .ui-page {
+   background: #0B0B61;
+   text-shadow: 0 0px 0 #FFFFFF;
+    }
+	
+
+
+p{
+font-size:14px;
+color:black;
+
+}
+
+#nav_button li{
+	
+	text-align:center;
+	width:50.00%; 
+	
+}
+
+
+
+#page_home {
+	position:absolute;
+	background:#0B0B61;
+	
+	width: 100%;
+	height: 90%;
+	top:0%;
+	
+	left:0px;
+	
+}
+
+
+#nav_button {
+	
+	
+	position: fixed;
+    bottom: 0;
+	
+}
+
+
+#nav_button li a{
+	
+	
+	width:100%;
+	height:10%;
+	
+}
+
+
+#nav_button .ui-btn{
+	
+	
+	height:50px;
+	
+}
+	
+#nav_button .ui-btn-text{
+	
+	font-size: 18px;
+	
+}
+	
+
+
+#quiz_content{
+	background:#0B0B61;
+	position:absolute;
+	top:8%;
+	width: 100%;
+	bottom:10%;
+	
+}
+
+#tools{
+	position:absolute;
+	top:8%;
+	width: 100%;
+	background:#0B0B61;
+	bottom:10%;
+	
+}
+
+
+#quiz_history{
+	background:#0B0B61;
+	position:absolute;
+	top:8%;
+	width: 100%;
+	
+	bottom:10%;
+	
+	
+}
+
+#help{
+	background:#0B0B61;
+	position:absolute;
+	top:8%;
+	width: 100%;
+	
+	bottom:10%;
+	
+	
+}
+
+#history_area{
+	
+	overflow: auto;
+	background:#0B0B61;
+}
+
+
+
+#quiz_results{
+	background:#0B0B61;
+	
+	
+}
+
+.tools_options{
+	
+	
+display: block;
+    margin: 0 auto;
+    text-align: center;
+ 
+}
+/*
+#live_answer_popup-popup {
+    width: 80%;
+    left: auto;
+    right: 0;
+}
+*/
+
+
+#tile_menu{
+	background:#0B0B61;
+	position:absolute;
+	top:8%;
+	width: 100%;
+	bottom:0%;
+}
+
+
+
+#questions_body{
+	position:absolute;
+	top:13%;
+	width: 100%;
+}
+
+#help_area{
+	position:absolute;
+	top:10%;
+	width: 100%;
+}
+/*
+#tab_title{
+	
+	text-align:center;
+	font-size: 16px;
+	color:white;
+	position:absolute;
+	width: 100%;
+	height: 7%;
+	
+	
+	left:0%;
+	top:7%;
+	
+	
+}
+*/
+
+#pred_loader_img{
+	
+	position:absolute;
+	width: 20%;
+	height: 13%;
+	
+	
+	left:40%;
+	top:43.5%;
+	
+	
+}
+
+
+#tile_bottom_left{
+	position:absolute; 
+   background-color: #C0C0C0; 
+  display: block;
+  color: #fff; 
+	
+	width: 44%;
+	height: 20%;
+	
+	
+	left:5%;
+	top:65%;
+	border-radius: 5px;
+	text-align:center;
+}
+
+#tile_bottom_right{
+	position:absolute; 
+   background-color: #C0C0C0; 
+  display: block;
+  color: #fff; 
+	
+	width: 44%;
+	height: 20%;
+	
+	
+	left:51%;
+	top:65%;
+	border-radius: 5px;
+	text-align:center;
+}
+
+#tile_middle_center{
+	position:absolute; 
+   background-color: #C0C0C0; 
+  display: block;
+  color: #fff; 
+	
+	width: 90%;
+	height: 15%;
+	
+	
+	left:5%;
+	top:49%;
+	border-radius: 5px;
+	
+	font-size:24px;
+	text-align:center;
+	vertical-align:middle;
+}
+
+#results_details {
+    
+	position:absolute;
+	top:15%;
+	width:100%;
+	text-align:center;
+}
+
+#results_score {
+    
+	position:absolute;
+	top:25%;
+	width: 100%;
+	text-align:center;
+}
+
+/*
+#details_results_popup {
+    z-index: 200;
+
+}
+*/
+
+
+#article_input_area{
+position:absolute; 
+text-align:center;
+width:60%;
+left:20%;
+top:35%;
+}
+
+#start_quizz_btn_area{
+position:absolute; 
+text-align:center;
+width:50%;
+left:25%;
+top:62%;
+}
+
+#questions_number_input_area{
+
+
+left:40%;
+width:20%;
+}
+
+#choices_number_input_area{
+
+
+width:20%;
+vertical-align:middle;
+}
+
+#language_area{
+position:absolute; 
+/* text-align:center; */
+width:10%;
+height: 10%;
+left:80%;
+top:40%;
+}
+
+#tile_top_left{
+	position:absolute; 
+   background-color: #C0C0C0; 
+  display: block;
+  color: #fff; 
+	
+	width: 90%;
+	height: 38%;
+	
+	
+	left:5%;
+	top:10%;
+	font-size:24px;
+	border-radius: 5px;
+	text-align:center;
+		vertical-align:middle;
+}
+
+#tile_top_right{
+	position:absolute; 
+   background-color: #C0C0C0; 
+  display: block;
+  color: #fff; 
+	
+	width: 44%;
+	height: 20%;
+	
+	
+	left:51%;
+	top:16%;
+	border-radius: 5px;
+	text-align:center;
+		vertical-align:middle;
+}
+
+#tile_middle_top{
+	position:absolute; 
+   background-color: #C0C0C0; 
+  display: block;
+  color: #fff; 
+	
+	width: 90%;
+	height: 40%;
+	
+	
+	left:5%;
+	
+	border-radius: 5px;
+	
+	font-size:26px;
+	text-align:center;
+	vertical-align:middle;
+}
+
+#tile_middle_bottom{
+	position:absolute; 
+   background-color: #C0C0C0; 
+  display: block;
+  color: #fff; 
+	
+	width: 90%;
+	height: 30%;
+	
+	
+	left:5%;
+	top:80%;
+	border-radius: 5px;
+	
+	font-size:26px;
+	text-align:center;
+	vertical-align:middle;
+}
+
+
+
+
+
+#result_content{
+	position:absolute; 
+	
+	
+	
+	left:0%;
+	top:8%;
+
+	
+	font-size:26px;
+	width:100%;
+	
+}
+
+#title{
+position:absolute;
+bottom:87%;
+width:100%;
+text-align:center;
+vertical-align:middle;
+color:white;
+
+
+}
